@@ -1,0 +1,26 @@
+#java Programming
+#To reduce the time complexity to be O(n) 
+#space complexity is calculated as a height of tree to be O(n)
+import java.util.Map;
+import java.util.HashMap;
+
+public class Fib
+{
+  static Map<Long, Long> Memo=new HashMap<>();
+  public static void main(String[] args)
+  {
+    long Result=FibCalc(50);
+    System.out.println(Result);
+  }
+  public static int FibCalc(long n)
+  {
+    if(n==1)
+      return 1;
+    if(Memo.containsKey(n))
+      return Memo.get(n);
+      
+    long Result=FibCalc(n-1)+FibCalc(n-2);
+    Memo.put(n,Result);
+    return Result;
+  }
+}
