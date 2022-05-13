@@ -7,15 +7,15 @@ import java.util.HashMap;
 public class Fib
 {
   static Map<Long, Long> Memo=new HashMap<>();
-  public static void main(String[] args)
+  public static void main(String args[])
   {
     long Result=FibCalc(50);
     System.out.println(Result);
   }
-  public static int FibCalc(long n)
+  public static long FibCalc(long n)
   {
-    if(n==1)
-      return 1;
+    if(n==1||n==0)
+      return n;
     if(Memo.containsKey(n))
       return Memo.get(n);
       
