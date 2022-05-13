@@ -1,0 +1,27 @@
+# To reduce time complexity from O(2^n+m) to O(n*m)
+# Space complexity O(n+m) height of tree
+# used long datatyype, because if we want to get mini path for large grid traveller number. when we used int it's limited so it's return negative number 
+import java.util.Map;
+import java.util.HashMap;
+class GridTravellerMemo
+{
+  static Map<String,Long> Memo=new HashMap<>();
+  public static void main(String args[])
+  {
+    long Res=GridTraveller(18,18);
+    System.out.println(Res);
+  }
+  public static long GridTraveller(int m,int n)
+  {
+    if(n==0||m==0) return 0;
+    if(n==1&&m==1) return 1;
+    String Key=""+(m-1)+","+n;
+    if(Memo.containsKey(Key))
+      {
+        return Memo.get(Key);
+      {
+    long Result=GridTraveller(m-1,n)+GridTraveller(m,n-1);
+    Memo.put(Key,Result);
+    return Result;
+  }
+}
