@@ -1,0 +1,35 @@
+#Reduce Time complexity to be O(n*m^2) replaced by O(n^m *m)
+#space complexity O(m^2)
+import java.util.*;
+
+class CombinationSum
+{
+  public static void main(String[] args)
+  {
+    int[] arr={2,3};
+    System.out.println(HowSum(arr,7));
+  }
+  public static List<List<Integer>> HowSum(int[] Numbers,int TargetSum)
+  {
+    ArrayList<Integer> list=new ArrayList<Integer>();
+    List<List<Integer>> Res=new ArrayList<>();
+    CombSum(Numbers,0m0mTargetSum,list,Res);
+    return Res;
+  }
+  public static List<List<Integer>> CombSum(int[] Array,int sum,int start,int TargetSum,ArrayList<Integer> list,List<List<Integer>> Result)
+  {
+    if(TargetSum==sum)
+    {
+      Result.add(new ArrayList<>(list));
+      return Result;
+    }
+    if(TargetSum<sum) return null;
+    for(int i=start;i<Array.length;i++)
+    {
+      list.add(Array[i]);
+      HowSum(Array,sum+Array[i],i,TargetSum,list,Result);
+      list.remove(list.size()-1);
+    }
+    return null;
+  }
+}
