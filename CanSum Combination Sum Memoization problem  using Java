@@ -1,0 +1,29 @@
+# Reduce the thime complexity to be O(m*n) replaced O(n^m)
+# Space complexity O(m) the height of the tree
+import java.util.Map;
+import java.util.HashMap;
+
+class CombinationSum{
+  static Map<Integer,Boolean> Memo=new HashMap<>();
+  public static void main(String [] args)
+  {
+    int[] Nums={2,4};
+    System.out.println(CanSum(7,Nums));
+  }
+  public static boolean CanSum(int TargetNum,int[] Numbers)
+  {
+    if(Memo.containsKey(TargetNum)) return true;
+    if(TargetNum==0) return true;
+    if(Target<0) return false;
+    for(int Num:Numbers)
+    {
+      int Reminder=TargetNum-Num;
+      if(CanSum(Reminder,Numbers)==true)
+      {
+        Memo.put(Reminder,CanSum(Reminder,Numbers));
+        return true;
+      }
+    }
+    return false;
+  }
+}
