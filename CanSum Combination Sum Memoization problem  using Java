@@ -12,7 +12,7 @@ class CombinationSum{
   }
   public static boolean CanSum(int TargetNum,int[] Numbers)
   {
-    if(Memo.containsKey(TargetNum)) return true;
+    if(Memo.containsKey(TargetNum)) return Memo.get(TargetNum);
     if(TargetNum==0) return true;
     if(Target<0) return false;
     for(int Num:Numbers)
@@ -24,6 +24,7 @@ class CombinationSum{
         return true;
       }
     }
+    Memo.put(Reminder,false);
     return false;
   }
 }
