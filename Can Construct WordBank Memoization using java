@@ -1,1 +1,40 @@
 
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+import java.util.Map;
+import java.util.HashMap;
+import java.util.*;
+class HelloWorld {
+    public static void main(String[] args) {
+          List<String> WordBank=new ArrayList<String>();
+          WordBank.add("ee");
+          WordBank.add("eee");
+          WordBank.add("eee");
+          WordBank.add("eee");
+          WordBank.add("eee");
+          WordBank.add("eee");
+          boolean Res=CanConstruct("eeeeeeeeeeeeeeeeeeeeeeeeeeeeef",sss);
+          System.out.println(Res); 
+    }
+    static Map<String,Boolean> Memo=new HashMap<>();
+    public static boolean CanConstruct(String word,List<String> WordBank){
+        if(Memo.containsKey(word)) return Memo.get(word);
+        if(word.isEmpty()){
+           //  System.out.println(word);
+            return true;
+        }
+        for(String singleword : WordBank)
+        {
+            if(word.indexOf(singleword)==0)
+            {
+                String reminder=word.substring(singleword.length());
+                if(CanConstruct(reminder,WordBank)==true){
+                    Memo.put(reminder,CanConstruct(reminder,WordBank));
+                    return true;
+                }
+            }
+        }
+        Memo.put(word,false);
+        return false;
+    }
+}
