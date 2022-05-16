@@ -1,15 +1,18 @@
-// Online Java Compiler
-// Use this editor to write, compile and run your Java code online
 import java.util.*;
 class HelloWorld {
     public static void main(String[] args) {
         String[] resu={"purp","p","ur","le","purpl"};
-        List<List<String>> res=AllConstruct(resu,"purple");
+        List<List<String>> res=AllConstructpath(resu,"purple");
         System.out.println(res);
     }
-    static List<List<String>> Result=new ArrayList<>();
-    static ArrayList<String> List=new ArrayList<>();
-    public static List<List<String>> AllConstruct(String[] WordBank,String Target){
+    public static List<List<String>> AllConstructpath(String[] WordBank,String Target){
+         List<List<String>> Result=new ArrayList<>();
+     ArrayList<String> List=new ArrayList<>();
+     AllConstruct(WordBank,Target,Result,List);
+     return Result;
+    }
+    
+    public static List<List<String>> AllConstruct(String[] WordBank,String Target,List<List<String>> Result,ArrayList<String> List){
         
         if(Target.isEmpty()){
             Result.add(new ArrayList<String> (List));
@@ -21,9 +24,10 @@ class HelloWorld {
             {
                 String reminder=Target.substring(word.length());
                 List.add(word);
-                AllConstruct(WordBank,reminder);
-                System.out.println(List);
+                AllConstruct(WordBank,reminder,Result,List);
+               //System.out.println(List);
                 List.remove(List.size()-1);
+                //Result.add(new ArrayList<String> (List));
             }
         }
         return null;
