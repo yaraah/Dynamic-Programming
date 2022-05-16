@@ -1,0 +1,31 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+import java.util.*;
+class HelloWorld {
+    public static void main(String[] args) {
+        String[] resu={"purp","p","ur","le","purpl"};
+        List<List<String>> res=AllConstruct(resu,"purple");
+        System.out.println(res);
+    }
+    static List<List<String>> Result=new ArrayList<>();
+    static ArrayList<String> List=new ArrayList<>();
+    public static List<List<String>> AllConstruct(String[] WordBank,String Target){
+        
+        if(Target.isEmpty()){
+            Result.add(new ArrayList<String> (List));
+            return Result;
+        }
+        for(String word:WordBank)
+        {
+            if(Target.indexOf(word)==0)
+            {
+                String reminder=Target.substring(word.length());
+                List.add(word);
+                AllConstruct(WordBank,reminder);
+                System.out.println(List);
+                List.remove(List.size()-1);
+            }
+        }
+        return null;
+    }      
+}
